@@ -76,15 +76,45 @@ barchartGC(~CAPPUN + OWNGUN,data=GSSdata, type="percent")
 ```
 
 
-
+This graph shows that people in favor of Capital punishment are more even in gun owning and there are more people who own guns that oppose capital punishment. 
 
 
 
 #### Numerical Descriptive Results
 
+```{r}
+table1 <- xtabs(~CAPPUN + OWNGUN, data=GSSdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+This table shows that people who dont own a gun and oppose capital punishment are higher that people who do own a gun. 
+
+
+
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+
+
+The chi squared test shows that the p-value is 0.02022 less than 0.05 this   means we must reject HO, and conclude that CAPPUN and OWNGUN are not   independent of eachother.   
+  
+
+The p-values for the fisher exact test was  0.01651, and the odds ratio was   2.271;1 this means that people who do not own a gun are more likely to   oppose capital punishement than those who do own a gun.  
+
+
+
+
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
