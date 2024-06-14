@@ -124,25 +124,71 @@ The p-values for the fisher exact test was  0.01651, and the odds ratio was   2.
 
 Is there a difference in years of education (EDUC) between the those who did or did not vote in 2012 (VOTE12)?
 
+
+$H_0$; There is no difference in years of education between those who did/did not vote. 
+
+$H_A$: There is a difference in years of education between those who did/did not vote. 
+
+
+
+
+
 ## Methods
+
+VOTE12 is a categorical variable 
+
+EDUC is a numerical variable
+
+we use helper file cat~num
+
+
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
 ##Results
 
+
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
 ### Descriptive Results
 
+
 #### Graphical Descriptive Results
+
+
+```{r}
+plot(EDUC~VOTE12,data=GSSdata)
+```
+
+
+The graph shows that there are  more people with higher education that voted than those who did not vote.
+
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
 
+```{r}
+favstats(EDUC~VOTE12,data=GSSdata)
+```
+The results above show that the average education level for people who voted is higher than those who did not ( 15.72: 13.42) 
+
+
+
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
+
+  
+```{r}
+t.test(EDUC~VOTE12,data=GSSdata)
+```
+
+The p-value given in the t test is 0.0000001248 this is smaller than 0.05 therefore we must reject HO
+
+
+
+
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
