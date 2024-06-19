@@ -107,10 +107,10 @@ fisher.test(table1)
 
 
 
-The chi squared test shows that the p-value is 0.02022 less than 0.05 this   means we must reject HO, and conclude that CAPPUN and OWNGUN are not   independent of eachother.   
+The chi squared test shows that the p-value is 0.02022 less than 0.05 this   means we must reject HO, and conclude that CAPPUN and OWNGUN are not   independent of each other.   
   
 
-The p-values for the fisher exact test was  0.01651, and the odds ratio was   2.271;1 this means that people who do not own a gun are more likely to   oppose capital punishement than those who do own a gun.  
+The p-values for the fisher exact test was  0.01651, and the odds ratio was   2.271;1 this means that people who do not own a gun are more likely to   oppose capital punishment than those who do own a gun.  
 
 
 
@@ -184,7 +184,8 @@ The results above show that the average education level for people who voted is 
 t.test(EDUC~VOTE12,data=GSSdata)
 ```
 
-The p-value given in the t test is 0.0000001248 this is smaller than 0.05 therefore we must reject HO
+
+The p-value given in the t test is 0.0000001248 this is smaller than 0.05 therefore we must reject HO.
 
 
 
@@ -198,9 +199,32 @@ The p-value given in the t test is 0.0000001248 this is smaller than 0.05 theref
 
 Determine if a persons performance on the wordsum test (WORDSUM) is independent of their level of schooling (DEGREE).
 
+
+## Intro
+
+
+$H_0$: A persons performance rate on the wordsum test is Independent of   their level of schooling.  
+
+$H_A$: A persons preformance level on the wordsum test is Dependent of their  schooling level.   
+
+
+
+
+
+
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+
+WORDSUM is a numerical variable.   
+
+DEGREE is a catogorical variable.   
+
+We use helper file Num~Cat  
+
+
+
+
 
 ##Results
 
@@ -210,18 +234,59 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 #### Graphical Descriptive Results
 
+
+
+```{r}
+plot(WORDSUM~DEGREE,data=GSSdata)
+```
+   
+The box plot shows that the average of people with a graduates degree scored high on the Wordsum test than any other degree.   
+
+
+
+
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
+
+
+```{r}
+favstats(WORDSUM~DEGREE,data=GSSdata)
+```
+
+The fave stats test shows that the highest median is those with a graduate degree which shows that those with a graduate degree scored higher on average on the Wordsum test than any other degree. 
+
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 ### Inferential Results
 
+
+```{r}
+anova=aov(WORDSUM~DEGREE,data=GSSdata)
+summary(anova)
+```
+The data above shows that the p-value is 0.00000025 this number is less than 0.05 therefore we must reject the Null hypothesis. 
+
+
+
+
+
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
 
 # Discussion and Conclusion
+
+In conclusion for question 1. the p-values and odds ratio show that that people who do not own a gun are more likely to oppose capital punishment than those who do own a gun. Therefore we we must reject HO, and conclude that CAPPUN and OWNGUN are not   independent of each other.   
+
+for question 2. 
+The p-value given in the t test is 0.0000001248 this is smaller than 0.05 therefore we must reject HO.  results also show that the average education level for people who voted is higher than those who did not ( 15.72: 13.42) 
+Therefor there is a difference in years of education between those who did/did not vote.
+
+Question 3. shows that the p-value is 0.00000025 this number is less than 0.05 therefore we must reject the Null hypothesis.the fave stats test and box plot show that the highest median is those with a graduate degree which shows that those with a graduate degree scored higher on average on the Wordsum test than any other degree. Therefore A persons preformance level on the wordsum test is Dependent of their schooling level.   
+
+
+
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
